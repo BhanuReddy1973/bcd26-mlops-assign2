@@ -109,11 +109,6 @@ E:.
         train.py
 ```
 
-> **📸 Screenshot Placeholder — Folder Structure (tree /f output)**
->
-> ![Folder Structure](./screenshots/01_folder_structure.png)
-
----
 
 ## 2. Add Dataset to `data/raw`
 
@@ -236,9 +231,7 @@ if __name__ == "__main__":
 python -m training.train
 ```
 
-> **📸 Screenshot Placeholder — First Run Output (v1)**
->
-> ![Train v1 Run](./screenshots/02_train_v1_run.png)
+![alt text](image-1.png)
 
 ---
 
@@ -349,9 +342,8 @@ if __name__ == "__main__":
 python -m training.train
 ```
 
-> **📸 Screenshot Placeholder — Train v2 Run Output (with Feature Engineering)**
->
-> ![Train v2 Run](./screenshots/03_train_v2_feature_engineering.png)
+
+
 
 **Expected terminal output:**
 ```
@@ -465,8 +457,8 @@ def save_metrics(f1, roc):
 **Output file:** `reports/metrics.json`
 ```json
 {
-    "F1 Score": 0.5533230293663061,
-    "ROC-AUC": 0.8356576128023849
+    "F1 Score":  0.541795665634675,
+    "ROC-AUC":  0.8398058629291874
 }
 ```
 
@@ -522,10 +514,7 @@ if __name__ == "__main__":
 ```bash
 python -m training.train
 ```
-
-> **📸 Screenshot Placeholder — Full Pipeline Run Output**
->
-> ![Full Pipeline Run](./screenshots/04_full_pipeline_run.png)
+![trainingimg](image.png)
 
 **Expected terminal output:**
 ```
@@ -553,9 +542,7 @@ pip install pandas numpy scikit-learn fastapi uvicorn joblib mlflow dvc
 pip freeze > requirements.txt
 ```
 
-> **📸 Screenshot Placeholder — pip install output**
->
-> ![pip install](./screenshots/05_pip_install.png)
+![alt text](image-2.png)
 
 ### Step 2 — Initialize Git repository
 
