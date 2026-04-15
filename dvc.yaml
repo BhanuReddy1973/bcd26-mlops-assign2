@@ -1,0 +1,15 @@
+stages:
+  train_pipeline:
+    cmd: python -m training.train
+    deps:
+      - training/train.py
+      - src/data/load_data.py
+      - src/data/preprocess.py
+      - src/features/build_features.py
+      - src/models/train_model.py
+      - src/models/evaluate_model.py
+      - data/raw/customer_churn.csv
+    outs:
+      - data/processed/data.csv
+      - models/model.pkl
+      - reports/metrics.json

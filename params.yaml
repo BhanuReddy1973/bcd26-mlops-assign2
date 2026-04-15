@@ -1,0 +1,13 @@
+data:
+  raw_path: data/raw/customer_churn.csv
+  processed_path: data/processed/data.csv
+
+model:
+  type: RandomForest
+  n_estimators: 100
+  random_state: 42
+  test_size: 0.2
+
+mlflow:
+  experiment_name: churn-prediction
+  registered_model_name: churn-model
