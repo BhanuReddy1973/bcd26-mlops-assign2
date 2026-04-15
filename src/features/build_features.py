@@ -1,9 +1,15 @@
 import pandas as pd
+import numpy as np
 import logging
+from datetime import datetime, timedelta
 
 logging.basicConfig(level=logging.INFO)
 
 def build_features(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Advanced feature engineering for churn prediction
+    Includes ML-based features for better model performance
+    """
     df = df.copy()
 
     # 1. Number of services subscribed
@@ -44,5 +50,26 @@ def build_features(df: pd.DataFrame) -> pd.DataFrame:
         axis=1
     )
 
-    logging.info("Feature engineering completed")
+    # 6. Charge increase rate (simulated)
+    df["charge_increase_rate"] = (df["MonthlyCharges"] * df["tenure"]) / (df["TotalCharges"] + 1)
+
+    # 7. Service density (services per dollar)
+    df["service_density"] = df["num_services"] / (df["MonthlyCharges"] + 1)
+
+    # 8. High value customer flag
+    df["is_high_value"] = (df["TotalCharges"] > df["TotalCharges"].quantile(0.75)).astype(int)
+
+    # 9. Payment method risk score
+    payment_risk = {
+        "Electronic check": 3,
+        "Mailed check": 2,
+        "Bank transfer (automatic)": 1,
+        "Credit card (automatic)": 1
+    }
+    df["payment_risk_score"] = df["PaymentMethod"].map(payment_risk).fillna(2)
+
+    # 10. Customer lifetime value estimate
+    df["estimated_clv"] = df["MonthlyCharges"] * df["tenure"]
+
+    logging.info("Advanced feature engineering completed with 10 features")
     return df
